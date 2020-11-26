@@ -1,4 +1,4 @@
-# pitu
+# 🦐 Pitu
 A simple micro-SaaS for URL shortening build with Luiz Tools.
 
 ### Try it!
