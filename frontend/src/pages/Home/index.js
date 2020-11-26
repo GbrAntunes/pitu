@@ -59,7 +59,7 @@ const Home = () => {
           <Form onSubmit={handleSubmit}>
             <InputGroup className="mb-3">
               <FormControl
-                placeholder="Digite a url para encurtar"
+                placeholder="https://www.google.com"
                 defaultValue=""
                 onChange={e => setUrl(e.target.value)}
               />
@@ -83,7 +83,7 @@ const Home = () => {
                         <Button variant="outline-secondary" onClick={() => copyToClipboard()}>Copiar</Button>
                       </InputGroup.Append>
                     </InputGroup>
-                    <p>Para acompanhar as estatísticas, acesse {vars.HOST_APP+code}</p>
+                    <p>Para acompanhar as estatísticas, acesse {vars.HOST_APP+code}/stats</p>
                   </>
                 )
               )}

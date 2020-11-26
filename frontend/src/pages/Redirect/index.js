@@ -22,7 +22,7 @@ const Redirect = () => {
     service.getLink(code).then(({ url }) => {
       
       setIsLoading(false)
-      window.location = url
+      window.location.replace(url)
 
     }).catch(err => {
       
