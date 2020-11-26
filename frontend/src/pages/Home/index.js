@@ -5,6 +5,7 @@ import { Container, InputGroup, FormControl, Button, Alert, Spinner } from 'reac
 import vars from '../../configs/vars'
 import ShortenerService from '../../services/shortnerService'
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 import { ContentContainer, Form } from './styles'
 
 const Home = () => {
@@ -51,45 +52,49 @@ const Home = () => {
   }
 
   return (
-    <Container>
-      <Header>Seu novo encurtador de URL. </Header>
-      <ContentContainer>
-        <Form onSubmit={handleSubmit}>
-          <InputGroup className="mb-3">
-            <FormControl
-              placeholder="Digite a url para encurtar"
-              defaultValue=""
-              onChange={e => setUrl(e.target.value)}
-            />
-            <InputGroup.Append>
-              <Button variant="primary" type="submit">Encurtar</Button>
-            </InputGroup.Append>
-          </InputGroup>
+    <>
+      <Container>
+        <Header>Seu novo encurtador de URL. </Header>
+        <ContentContainer>
+          <Form onSubmit={handleSubmit}>
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Digite a url para encurtar"
+                defaultValue=""
+                onChange={e => setUrl(e.target.value)}
+              />
+              <InputGroup.Append>
+                <Button variant="primary" type="submit">Encurtar</Button>
+              </InputGroup.Append>
+            </InputGroup>
 
-          {isLoading ? (
-            <Spinner animation="border" />
-          ) : (
-              code && (
-                <>
-                  <InputGroup className="mb-3">
-                    <FormControl
-                      autoFocus
-                      defaultValue={`${vars.HOST_APP}${code}`}
-                      ref={inputRef}
-                    />
-                    <InputGroup.Append>
-                      <Button variant="outline-secondary" onClick={() => copyToClipboard()}>Copiar</Button>
-                    </InputGroup.Append>
-                  </InputGroup>
-                  <p>Para acompanhar as estatísticas, acesse {vars.HOST_APP+code}</p>
-                </>
-              )
-            )}
+            {isLoading ? (
+              <Spinner animation="border" />
+            ) : (
+                code && (
+                  <>
+                    <InputGroup className="mb-3">
+                      <FormControl
+                        autoFocus
+                        defaultValue={`${vars.HOST_APP}${code}`}
+                        ref={inputRef}
+                      />
+                      <InputGroup.Append>
+                        <Button variant="outline-secondary" onClick={() => copyToClipboard()}>Copiar</Button>
+                      </InputGroup.Append>
+                    </InputGroup>
+                    <p>Para acompanhar as estatísticas, acesse {vars.HOST_APP+code}</p>
+                  </>
+                )
+              )}
 
-            {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-        </Form>
-      </ContentContainer>
-    </Container>
+              {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+          </Form>
+        </ContentContainer>
+
+      </Container>
+      <Footer />
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import ShortenerService from '../../services/shortnerService'
+import Footer from '../../components/Footer'
 
 import { StatsContainer } from './styles';
 
@@ -32,22 +33,25 @@ const Redirect = () => {
   }, [])
 
   return (
-    <Container>
-      { errorMessage ? (
-        <>
-          <Header>
-            Seu novo encurtador de urls
-          </Header>
-          <StatsContainer className="text-center">
-            <FontAwesomeIcon size="3x" color="#f8d7da" icon="exclamation-circle" />
-            <p class="m-3">{errorMessage}</p>
-            <a className="btn btn-primary" href="/">Encurtar nova URL</a>
-          </StatsContainer>
-        </>
-      ) : (
-        <p class="text-center">Redirecionando...</p>
-      )}
-    </Container>
+    <>
+      <Container>
+        { errorMessage ? (
+          <>
+            <Header>
+              Seu novo encurtador de urls
+            </Header>
+            <StatsContainer className="text-center">
+              <FontAwesomeIcon size="3x" color="#f8d7da" icon="exclamation-circle" />
+              <p class="m-3">{errorMessage}</p>
+              <a className="btn btn-primary" href="/">Encurtar nova URL</a>
+            </StatsContainer>
+          </>
+        ) : (
+          <p class="text-center">Redirecionando...</p>
+        )}
+      </Container>
+      <Footer />
+    </>
   );
 };
 

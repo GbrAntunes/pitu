@@ -7,6 +7,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 
 import vars from '../../configs/vars'
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 import { StatsContainer, StatsRow, StatsBox, StatsBoxTitle } from './styles';
 
 import ShortenerService from '../../services/shortnerService'
@@ -44,38 +45,41 @@ const Stats = () => {
   }, [])
 
   return (
-    <Container>
-      <Header>Estatísticas</Header>
-      { errorMessage ? (
+    <>
+      <Container>
+        <Header>Estatísticas</Header>
+        { errorMessage ? (
 
-        <StatsContainer className="text-center">
-          <FontAwesomeIcon size="3x" color="#f8d7da" icon="exclamation-circle" />
-          <p className="m-3">{errorMessage}</p>
-          <a className="btn btn-primary" href="/">Encurtar nova URL</a>
-        </StatsContainer>
-
-      ) : (
           <StatsContainer className="text-center">
-            <p><b>{vars.HOST_APP+shortenedUrl.code}</b></p>
-            <p>Redireciona para:<br />{shortenedUrl.url} </p>
-            <StatsRow>
-
-              <StatsBox>
-                <b>{shortenedUrl.hits}</b>
-                <StatsBoxTitle>Visitas</StatsBoxTitle>
-              </StatsBox>
-
-              <StatsBox>
-                <b>{shortenedUrl.relativeDate}</b>
-                <StatsBoxTitle>Última visita {shortenedUrl.relativeDate}</StatsBoxTitle>
-              </StatsBox>
-
-            </StatsRow>
-
+            <FontAwesomeIcon size="3x" color="#f8d7da" icon="exclamation-circle" />
+            <p className="m-3">{errorMessage}</p>
             <a className="btn btn-primary" href="/">Encurtar nova URL</a>
           </StatsContainer>
-        )}
-    </Container>
+
+        ) : (
+            <StatsContainer className="text-center">
+              <p><b>{vars.HOST_APP+shortenedUrl.code}</b></p>
+              <p>Redireciona para:<br />{shortenedUrl.url} </p>
+              <StatsRow>
+
+                <StatsBox>
+                  <b>{shortenedUrl.hits}</b>
+                  <StatsBoxTitle>Visitas</StatsBoxTitle>
+                </StatsBox>
+
+                <StatsBox>
+                  <b>{shortenedUrl.relativeDate}</b>
+                  <StatsBoxTitle>Última visita {shortenedUrl.relativeDate}</StatsBoxTitle>
+                </StatsBox>
+
+              </StatsRow>
+
+              <a className="btn btn-primary" href="/">Encurtar nova URL</a>
+            </StatsContainer>
+          )}
+      </Container>
+      <Footer />
+    </>
   );
 };
 
