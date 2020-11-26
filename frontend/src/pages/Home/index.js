@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Container, InputGroup, FormControl, Button, Alert, Spinner } from 'react-bootstrap'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import vars from '../../configs/vars'
 import ShortenerService from '../../services/shortnerService'
 import Header from '../../components/Header'
 import { ContentContainer, Form } from './styles'
@@ -73,14 +74,14 @@ const Home = () => {
                   <InputGroup className="mb-3">
                     <FormControl
                       autoFocus
-                      defaultValue={`https://pitu.tk/${code}`}
+                      defaultValue={`${vars.HOST_APP}${code}`}
                       ref={inputRef}
                     />
                     <InputGroup.Append>
                       <Button variant="outline-secondary" onClick={() => copyToClipboard()}>Copiar</Button>
                     </InputGroup.Append>
                   </InputGroup>
-                  <p>Para acompanhar as estatísticas, acesse http://pitu.tk/{code}</p>
+                  <p>Para acompanhar as estatísticas, acesse {vars.HOST_APP+code}</p>
                 </>
               )
             )}

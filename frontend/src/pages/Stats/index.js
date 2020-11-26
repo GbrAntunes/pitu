@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { parseISO, formatRelative } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
+import vars from '../../configs/vars'
 import Header from '../../components/Header'
 import { StatsContainer, StatsRow, StatsBox, StatsBoxTitle } from './styles';
 
@@ -55,7 +56,7 @@ const Stats = () => {
 
       ) : (
           <StatsContainer className="text-center">
-            <p><b>https://pitu.tk/{shortenedUrl.code}</b></p>
+            <p><b>{vars.HOST_APP+shortenedUrl.code}</b></p>
             <p>Redireciona para:<br />{shortenedUrl.url} </p>
             <StatsRow>
 
